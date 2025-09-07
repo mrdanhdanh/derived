@@ -1,0 +1,27 @@
+<main class="main">
+  <div class="content">
+    <div class="left-side">
+      <h1>Danh sách 5 item</h1>
+      <div>
+        <input id="hincd" type="text" placeholder="Nhập giá trị cho hincd" [(ngModel)]="hincd" (ngModelChange)="onDerivedFromHincd($event)" />
+      </div>
+      <div>
+        <input id="hinnma" type="text" placeholder="Nhập giá trị cho hinnma" 
+        [(ngModel)]="hinnma" (ngModelChange)="onDerivedFromHinnma($event)"
+        [derived]="{deps: ['hincd'], handler: 'handleHinnma'}"
+        />
+      </div>
+      <div>
+        <input id="hinnmb" [(ngModel)]="hinnmb" [derived]="{deps: ['hinnma'], handler: 'handleHinnmb'}">
+      </div>
+      <div>
+        <input id="hinkb" type="text" placeholder="Nhập giá trị cho hinkb" [(ngModel)]="hinkb"
+          [derived]="{deps: ['hincd','hinnma'], handler: 'handleHinkb'}"
+        />
+      </div>
+      <div>
+        <input id="hintl" type="text" placeholder="Nhập giá trị cho hintl" [(ngModel)]="hintl" />
+      </div>
+    </div>
+  </div>
+</main>

@@ -19,10 +19,11 @@ export class DerivedDirective implements OnInit, OnDestroy {
     const handler = this.derivedConfig.handler;
     const hostAny = this.host as any;
     deps.forEach(dep => {
-      if (hostAny['DerivedFrom' + dep]) {
-        const sub = hostAny['DerivedFrom' + dep].subscribe(() => {
-          if (typeof hostAny[handler] === 'function') {
-            hostAny[handler]();
+      if (hostAny['DerivedFrom']) {
+        const sub = hostAny['DerivedFrom'].subscribe((value: any) => {
+          console.log(`DerivedDirective: Detected change in ${dep}, invoking handler ${handler}, value:`, value);  
+          if (dep === value && typeof hostAny[handler] === 'function') {
+            hostAny[handler](value);
           }
         });
         this.unsubscribers.push(() => sub.unsubscribe());

@@ -18,8 +18,8 @@ export class AppComponent {
   hinkb = '';
   hintl = '';
 
-  DerivedFromhincd = new Subject<string>();
-  DerivedFromhinnma = new Subject<string>();
+  DerivedFromHINCD = new Subject<string>();
+  DerivedFromHINNMA = new Subject<string>();
 
   derivedOrigin = '';
 
@@ -27,7 +27,7 @@ export class AppComponent {
   onDerivedFromHincd(value: string) {
     this.derivedOrigin = 'HINCD';
     this.hincd = value;
-    this.DerivedFromhincd.next(value);
+    this.DerivedFromHINCD.next(value);
     console.log('hincd changed to:', this.hincd);
   }
 
@@ -37,7 +37,7 @@ export class AppComponent {
     this.hinnma = value;
     // Gọi hàm này thì mới kích hoạt được derived
     // Có thể thêm điều kiện, chẳng hạn như khi check không có lỗi chẳng hạn
-    this.DerivedFromhinnma.next(value);
+    this.DerivedFromHINNMA.next(value);
   }
 
   // Khi hinnmb thay đổi
@@ -51,7 +51,7 @@ export class AppComponent {
   handleHinnma() {
     this.hinnma = this.hincd + ' - processed';
     console.log('hinnma updated to:', this.hinnma);
-    this.DerivedFromhinnma.next(this.hinnma);
+    this.DerivedFromHINNMA.next(this.hinnma);
     // Xử lý khi hincd thay đổi
     // Ví dụ: this.hinnma = this.hincd + ' - processed';
   }

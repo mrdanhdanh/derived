@@ -8,15 +8,16 @@
       <div>
         <input id="hinnma" type="text" placeholder="Nhập giá trị cho hinnma" 
         [(ngModel)]="hinnma" (ngModelChange)="onDerivedFromHinnma($event)"
-        [derived]="{deps: ['hincd'], handler: 'handleHinnma'}"
+        [derived]="{deps: ['HINCD'], handler: 'handleHinnma'}"
         />
       </div>
       <div>
-        <input id="hinnmb" [(ngModel)]="hinnmb" [derived]="{deps: ['hinnma'], handler: 'handleHinnmb'}">
+        <input id="hinnmb" [(ngModel)]="hinnmb"
+          [derived]="{deps: ['HINNMA'], handler: 'handleHinnmb'}">
       </div>
       <div>
         <input id="hinkb" type="text" placeholder="Nhập giá trị cho hinkb" [(ngModel)]="hinkb"
-          [derived]="{deps: ['hincd','hinnma'], handler: 'handleHinkb'}"
+          [derived]="{deps: ['HINCD','HINNMA'], handler: 'handleHinkb'}"
         />
       </div>
       <div>
